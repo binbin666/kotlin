@@ -96,7 +96,7 @@ sealed class LightClassDataProviderForFileFacade constructor(
 
     override fun compute(): CachedValueProvider.Result<LightClassDataHolder.ForFacade>? {
         val files = findFiles()
-        if (files.isEmpty()) return null
+        if (files.isEmpty()) error("No files")
 
         return CachedValueProvider.Result.create(
                 computeLightClassData(files),

@@ -215,7 +215,7 @@ object LightClassLazinessChecker {
 
         tracker.allowLevel(EXACT)
 
-        lightClass.clsDelegate // trigger exact context
+        lightClass.clsDelegate!! // trigger exact context
 
         tracker.checkLevel(EXACT)
 
