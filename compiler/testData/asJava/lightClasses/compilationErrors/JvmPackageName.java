@@ -1,5 +1,4 @@
-public final class B {
-    public final int f(int j) { /* compiled code */ }
-
-    public B() { /* compiled code */ }
+@kotlin.jvm.JvmPackageName(name = "a.b.c")
+public final class JvmPackageNameKt {
+    public static final void f() { /* compiled code */ }
 }

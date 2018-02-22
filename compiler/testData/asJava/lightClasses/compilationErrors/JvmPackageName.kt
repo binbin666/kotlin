@@ -1,11 +1,7 @@
-// a.b.c.B
+// a.b.c.JvmPackageNameKt
 @file:JvmPackageName("a.b.c")
 package p
 
-class B {
-    fun f(j: Int) = j
+fun f() {
 
-    fun g(c: C) = c
 }
-
-class C
