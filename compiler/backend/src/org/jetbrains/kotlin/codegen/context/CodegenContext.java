@@ -569,10 +569,11 @@ public abstract class CodegenContext<T extends DeclarationDescriptor> {
         CodegenContext properContext = getFirstCrossInlineOrNonInlineContext();
         DeclarationDescriptor enclosing = descriptor.getContainingDeclaration();
         boolean isInliningContext = properContext.isInlineMethodContext();
+        boolean sameJvmDefault = CodegenUtilKt.hasJvmDefaultAnnotation(descriptor) == CodegenUtilKt.hasJvmDefaultAnnotation(properContext.contextDescriptor)
         if (!isInliningContext && (
                 !properContext.hasThisDescriptor() ||
-                enclosing == properContext.getThisDescriptor() ||
-                enclosing == properContext.getClassOrPackageParentContext().getContextDescriptor())) {
+                sameJvmDefault && (enclosing == properContext.getThisDescriptor() ||
+                                   enclosing == properContext.getClassOrPackageParentContext().getContextDescriptor()))) {
             return descriptor;
         }
         return (D) properContext.accessibleDescriptorIfNeeded(descriptor, superCallTarget, isInliningContext);
